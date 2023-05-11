@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <form action="" id="contactForm">
+        <form action="" id="contactForm" onsubmit="sendemail() ; reset(); return false;">
             <div class="alert">Your message sent</div>
 
             <div class="inputBox">
@@ -34,6 +34,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
     <script src="./mail.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendemail(){
+            Email.send({
+            Host : "smtp.gmail.com",
+            Username : "ppriyanshu7895735370@gmail.com",
+            Password : "snajayksharma",
+            To : document.getElementByID("emailid").value,
+            From : "ppriyanshu7895735370@gmail.com",
+            Subject : "testing",
+            Body :"Registration successfull"+
+                "Name :"+ document.getElementByID("name").value
+                +"<br> Email:"+ document.getElementByID("emailid").value
+                
+            }).then(
+            message => alert(message)
+            );  
+    </script>
 </body>
 
 </html>
